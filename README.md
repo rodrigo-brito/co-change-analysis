@@ -18,5 +18,5 @@ make init
 
 ### Usage with Docker
 ```
-docker run -ti rodrigobrito/co-change git@github.com:square/retrofit.git
+docker run -ti rodrigobrito/cochange -p git@github.com:square/retrofit.git
 ```

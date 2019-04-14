@@ -1,1 +1,2 @@
 GitPython==2.1.11
+PyDriller==1.7
