@@ -1,5 +1,5 @@
 # co-change-analysis
-Extract and analysis co-changes in Java projects
+Extract and analysis co-changes in Go projects
 
 ### Installation and usage
 1. Install [python3](#), [virtualenv](#) and [git](#).
