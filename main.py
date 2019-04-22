@@ -5,6 +5,8 @@ import git
 import argparse
 
 from pydriller import RepositoryMining
+
+from apriori import Apriori
 from parsers.base import BaseParser
 from parsers.golang import GoParser
 from parsers.java import JavaParser
@@ -40,10 +42,17 @@ def main():
     elif args.lang == "python":
         parser = PythonParser
 
+    function_changes = []
     for commit in RepositoryMining(project_path).traverse_commits():
-        print("COMMIT = ", commit.hash)
-        base = parser(project_path, commit.hash)
-        print(base.get_diff())
+        language_parser = parser(project_path, commit.hash)
+        changes = language_parser.get_diff()
+        if changes:
+            function_changes.append(changes)
+
+    apriori = Apriori(function_changes, support=0.5, confidence=1)
+    rules = apriori.get_rules()
+    for rule in rules:
+        print(rule)
 
 
 if __name__ == '__main__':

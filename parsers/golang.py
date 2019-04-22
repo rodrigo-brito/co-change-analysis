@@ -1,8 +1,16 @@
+# -*- coding: utf-8 -*-
+
 import re
 from parsers.base import BaseParser
 
 
 class GoParser(BaseParser):
+    def is_invalid_file(self, file_name):
+        if not file_name:
+            return True
+
+        return file_name.startswith("vendor/") or file_name.endswith("_test.go")
+
     def get_changes(self, diff):
         matches = re.findall(
             r"func(?: \((?:.*\s)?(\w+)\))?\s+(\w+)\(.*\)\s*\{(?:[^func])*(?:\n|\r|\r\n|\n\r)(?:\+|\-)(?:[^func])*",

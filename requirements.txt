@@ -1,2 +1,3 @@
 GitPython==2.1.11
 PyDriller==1.7
+efficient-apriori==0.4.5

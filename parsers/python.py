@@ -1,15 +1,11 @@
-import re
+# -*- coding: utf-8 -*-
 
 from parsers.base import BaseParser
 
 
 class PythonParser(BaseParser):
-    def get_changes(self, diff):
-        matches = re.findall(
-            r"(public|static|void|main)\(.*\)\{", # TODO: Python Parser
-            diff, re.MULTILINE)
+    def is_invalid_file(self, file_name):
+        return False
 
-        functions = []
-        if matches:
-            pass
-        return functions
+    def get_changes(self, diff):
+        return []  # TODO: create python parser
