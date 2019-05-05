@@ -2,7 +2,7 @@ from efficient_apriori import apriori
 
 
 class Apriori:
-    def __init__(self, transactions, support=0.5, confidence=1):
+    def __init__(self, transactions, support=0.5, confidence=0.5):
         self.transactions = transactions
         self.support = support
         self.confidence = confidence

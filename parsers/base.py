@@ -2,6 +2,7 @@
 
 import os
 import re
+import subprocess
 
 
 class BaseParser:
@@ -13,9 +14,17 @@ class BaseParser:
         return False
 
     def get_diff(self):
-        diff_by_commit = os.popen("cd %s && git show --function-context %s" % (self.project_path,
-                                                                               self.commit_hash)).read()
-        blocks = diff_by_commit.split("diff --git")
+        args = ["git", "show", "--function-context", self.commit_hash]
+        diff_proccess = subprocess.Popen(args, stdout=subprocess.PIPE, encoding="utf-8", errors="ignore",
+                                         universal_newlines=True, stderr=subprocess.PIPE, cwd=self.project_path)
+
+        out, err = diff_proccess.communicate()
+        errcode = diff_proccess.returncode
+
+        if errcode != 0:
+            raise RuntimeError(err)
+
+        blocks = out.split("diff --git")
         diffs = []
         for block in blocks:
             file_name = self.get_file_name(block)

@@ -18,11 +18,15 @@ p = argparse.ArgumentParser(description="Prepare something code.")
 p.add_argument("-r", "--repository", help="Remote Git repository", required=False)
 p.add_argument("-d", "--dir", help="Local project directory", required=False)
 p.add_argument("-l", "--lang", help="Programming language", choices=['python', 'java', 'go'], required=True)
-p.add_argument("-s", "--support", help="correlation support value", default=0.8)
+p.add_argument("-s", "--support", help="correlation support value", default=0.5)
+p.add_argument("-c", "--confidence", help="correlation support value", default=0.5)
 
 
 def main():
     args = p.parse_args()
+    confidence = float(args.confidence)
+    support = float(args.support)
+    print("Apriori (support=%.2f, confidence=%.2f)" % (confidence, support))
     gitpy = git.Git(CLONE_PATH)
 
     # fetching repository / folder
@@ -42,6 +46,7 @@ def main():
     elif args.lang == "python":
         parser = PythonParser
 
+    print("parsing project...")
     function_changes = []
     for commit in RepositoryMining(project_path).traverse_commits():
         language_parser = parser(project_path, commit.hash)
@@ -49,7 +54,8 @@ def main():
         if changes:
             function_changes.append(changes)
 
-    apriori = Apriori(function_changes, support=0.5, confidence=1)
+    print("analyzing transactions...")
+    apriori = Apriori(function_changes, confidence=float(args.confidence), support=float(args.support))
     rules = apriori.get_rules()
     for rule in rules:
         print(rule)
