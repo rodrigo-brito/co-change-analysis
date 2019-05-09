@@ -1,0 +1,98 @@
+[
+  [
+    "[doc.go] main",
+    "[mux.go] main",
+    "[mux.go] init",
+    "[mux.go] setVars",
+    "[mux.go] setCurrentRoute",
+    "[mux.go] mapFromPairs",
+    "[regexp.go] newRouteRegexp",
+    "[regexp.go] braceIndices"
+  ],
+  [
+    "[regexp.go] newRouteRegexp"
+  ],
+  [
+    "[mux.go] mapFromPairs",
+    "[mux.go] mapFromPairsToString",
+    "[mux.go] mapFromPairsToRegex"
+  ],
+  [
+    "[mux.go] mapFromPairs",
+    "[mux.go] mapFromPairsToString",
+    "[mux.go] mapFromPairsToRegex"
+  ],
+  [
+    "[README.md] main"
+  ],
+  [
+    "[README.md] YourHandler",
+    "[README.md] main"
+  ],
+  [
+    "[mux.go] setVars",
+    "[mux.go] setCurrentRoute"
+  ],
+  [
+    "[README.md] main"
+  ],
+  [
+    "[regexp.go] extractVars"
+  ],
+  [
+    "[context_gorilla.go] contextClear",
+    "[context_native.go] contextClear",
+    "[mux.go] setVars",
+    "[mux.go] setCurrentRoute"
+  ],
+  [
+    "[README.md] main",
+    "[doc.go] main"
+  ],
+  [
+    "[regexp.go] extractVars"
+  ],
+  [
+    "[regexp.go] newRouteRegexp"
+  ],
+  [
+    "[README.md] ArticlesCategoryHandler"
+  ],
+  [
+    "[README.md] handler",
+    "[README.md] main"
+  ],
+  [
+    "[mux.go] methodNotAllowed"
+  ],
+  [
+    "[regexp.go] newRouteRegexp"
+  ],
+  [
+    "[README.md] main",
+    "[README.md] ArticlesCategoryHandler",
+    "[README.md] main",
+    "[README.md] main",
+    "[README.md] YourHandler",
+    "[README.md] main"
+  ],
+  [
+    "[README.md] HealthCheckHandler",
+    "[README.md] main",
+    "[README.md] TestHealthCheckHandler",
+    "[README.md] main",
+    "[README.md] TestMetricsHandler"
+  ],
+  [
+    "[README.md] handler",
+    "[README.md] main",
+    "[README.md] handler",
+    "[README.md] main"
+  ],
+  [
+    "[context_gorilla.go] contextClear"
+  ],
+  [
+    "[context.go] contextClear"
+  ]
+]
