@@ -36,6 +36,7 @@ class BaseParser:
             group_changes = []
             if file_name and functions_changed:
                 for function in functions_changed:
+                    #diffs.append("[%s] %s" % (file_name, function))
                     group_changes.append("[%s] %s" % (file_name, function))
 
                 diffs.append(tuple(group_changes))
