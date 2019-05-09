@@ -12,8 +12,8 @@ from parsers.golang import GoParser
 from parsers.java import JavaParser
 from parsers.python import PythonParser
 from settings import CLONE_PATH
-from utils.utils import generate_hash
-from utils.utils import get_commit_count
+from utils.utils import *
+from pprint import pprint
 
 p = argparse.ArgumentParser(description="Prepare something code.")
 p.add_argument("-r", "--repository", help="Remote Git repository", required=False)
@@ -22,13 +22,18 @@ p.add_argument("-l", "--lang", help="Programming language", choices=['python', '
 p.add_argument("-s", "--support", help="correlation support value", default=0.5)
 p.add_argument("-c", "--confidence", help="correlation support value", default=0.5)
 p.add_argument("-L", "--max_length", help="max number of items in a rule", default=2)
+p.add_argument("-t", "--transactions", help="transactions file", required=False)
 
 def main():
     args = p.parse_args()
     confidence = float(args.confidence)
     support = float(args.support)
     max_length = int(args.max_length)
-    print("Apriori (support=%.3f, confidence=%.3f, max_length=%d)" % (support, confidence, max_length))
+    transactions_file_name = args.transactions
+    
+    print("support=%.3f" % (support))
+    print("confidence=%.3f" % (confidence))
+    print("max_length=%d" % (max_length))
     
     gitpy = git.Git(CLONE_PATH)
 
@@ -52,26 +57,28 @@ def main():
     elif args.lang == "python":
         parser = PythonParser
     
-    print("parsing project...")
+    print("fetching transactions...")
     
-    function_changes = []
+    transactions = []
     for commit in RepositoryMining(project_path).traverse_commits():
         language_parser = parser(project_path, commit.hash)
-        changes = language_parser.get_diff()
-        if changes:
-            function_changes.append(changes)
-            
-    print("Transactions:")
-    for changes in function_changes:
+        items = language_parser.get_diff()
+        if items:
+            transactions.append(items)
+        
+    print(ansi_color_yellow("Transactions:"))
+    for i, changes in enumerate(transactions):
+        print("%3d: " % (i), end='')
         print(changes)
     
     print("analyzing transactions...")
     
-    apriori = Apriori(function_changes, confidence=float(confidence), support=float(support), max_length=int(max_length))
+    apriori = Apriori(transactions, confidence=float(confidence), support=float(support), max_length=int(max_length))
     rules = apriori.get_rules()
     
-    print("Association rules:")
-    for rule in rules:
+    print(ansi_color_yellow("Association rules:"))
+    for i, rule in enumerate(rules):
+        print("%3d: " % (i), end='')
         print(rule)
 
 

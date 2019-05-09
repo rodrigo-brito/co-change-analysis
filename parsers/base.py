@@ -33,13 +33,9 @@ class BaseParser:
             if self.is_invalid_file(file_name):
                 continue
 
-            group_changes = []
             if file_name and functions_changed:
                 for function in functions_changed:
-                    #diffs.append("[%s] %s" % (file_name, function))
-                    group_changes.append("[%s] %s" % (file_name, function))
-
-                diffs.append(tuple(group_changes))
+                    diffs.append("[%s] %s" % (file_name, function))
 
         return diffs
 
