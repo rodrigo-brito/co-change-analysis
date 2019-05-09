@@ -27,8 +27,8 @@ def main():
     args = p.parse_args()
     confidence = float(args.confidence)
     support = float(args.support)
-    max_length = float(args.max_length)
-    print("Apriori (support=%.3f, confidence=%.3f)" % (support, confidence))
+    max_length = int(args.max_length)
+    print("Apriori (support=%.3f, confidence=%.3f, max_length=%d)" % (support, confidence, max_length))
     
     gitpy = git.Git(CLONE_PATH)
 
