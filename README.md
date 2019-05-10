@@ -16,10 +16,10 @@ make init
 3. Analysis a project
 
 ```
-./main.py -l java -r git@github.com:square/retrofit.git
+./main.py --lang go -r https://github.com/gorilla/mux.git  --support 0.001 --confidence 0.1
 ```
 
 ### Usage with Docker
 ```
-docker run -ti rodrigobrito/cochange -l java -r git@github.com:square/retrofit.git
+docker run -ti rodrigobrito/cochange -l go -r https://github.com/gorilla/mux.git  -s 0.001 -c 0.1
 ```

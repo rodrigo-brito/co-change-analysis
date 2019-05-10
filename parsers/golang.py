@@ -9,7 +9,7 @@ class GoParser(BaseParser):
         if not file_name:
             return True
 
-        return file_name.startswith("vendor/") or file_name.endswith("_test.go")
+        return file_name.startswith("vendor/") or file_name.endswith("_test.go") or not file_name.endswith(".go")
 
     def get_changes(self, diff):
         matches = re.findall(
