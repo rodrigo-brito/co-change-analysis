@@ -37,6 +37,8 @@ class BaseParser:
                 for function in functions_changed:
                     diffs.append("[%s] %s" % (file_name, function))
 
+        diffs.sort()
+
         return diffs
 
     def get_file_name(self, block):

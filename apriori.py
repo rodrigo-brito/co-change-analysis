@@ -19,3 +19,9 @@ class Apriori:
     def get_rules(self):
         _, rules = apriori(self.transactions, min_support=self.support, min_confidence=self.confidence, max_length=self.max_length)
         return rules
+
+    def get_rules_csv(self, limit):
+        for index, rule in enumerate(self.get_rules()):
+            if limit and index > limit:
+                break
+            print("%s,%s,%.3f,%.3f" % ('/'.join(rule.lhs), '/'.join(rule.rhs), rule.support, rule.confidence))
