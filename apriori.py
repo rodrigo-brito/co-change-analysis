@@ -24,4 +24,4 @@ class Apriori:
         for index, rule in enumerate(self.get_rules()):
             if limit and index > limit:
                 break
-            print("%s,%s,%.3f,%.3f" % ('/'.join(rule.lhs), '/'.join(rule.rhs), rule.support, rule.confidence))
+            print('%s,%s,"%.0f","%.3f"' % ('/'.join(rule.lhs), '/'.join(rule.rhs), rule.support*rule.num_transactions, rule.confidence))

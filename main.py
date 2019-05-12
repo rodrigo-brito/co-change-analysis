@@ -100,7 +100,7 @@ def main():
 
     # Output in CSV format
     if args.csv:
-        apriori.get_rules_csv(10)
+        apriori.get_rules_csv(1000)
     else:
         rules = apriori.get_rules()
         for i, rule in enumerate(rules):
