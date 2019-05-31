@@ -20,8 +20,10 @@ class Apriori:
         _, rules = apriori(self.transactions, min_support=self.support, min_confidence=self.confidence, max_length=self.max_length)
         return rules
 
-    def get_rules_csv(self, limit):
+    def get_rules_csv(self):
+        rules_csv = []
         for index, rule in enumerate(self.get_rules()):
-            if limit and index > limit:
-                break
-            print('%s,%s,"%.0f","%.3f"' % ('/'.join(rule.lhs), '/'.join(rule.rhs), rule.support*rule.num_transactions, rule.confidence))
+            lhs = rule.lhs[0].split("|")
+            rhs = rule.rhs[0].split("|")
+            rules_csv.append({'lhs_file': lhs[0], 'rhs_file': rhs[0], 'lhs_function': lhs[1], 'rhs_function': rhs[1], 'support': rule.support*rule.num_transactions, 'confidence': rule.confidence})
+        return rules_csv

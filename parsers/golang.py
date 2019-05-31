@@ -15,4 +15,4 @@ class GoParser(BaseParser):
                not file_name.endswith(".go")
 
     def get_changes(self, diff):
-        return re.findall(r"func (?:.* )?(\w+)\(.*\) \S*\s*{", diff, re.MULTILINE)
+        return set(re.findall(r"func (?:.* )?(\w+)\(.*\) \S*\s*{", diff, re.MULTILINE))

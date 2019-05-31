@@ -4,6 +4,7 @@
 import git
 import argparse
 import json
+import csv
 
 from pydriller import RepositoryMining
 
@@ -26,7 +27,7 @@ p.add_argument("-L", "--max_length", help="max number of items in a rule", defau
 p.add_argument("-t", "--transactions", help="transactions file", required=False)
 p.add_argument("-ot", "--out_transactions", help="write transactions file", required=False)
 p.add_argument("-m", "--max_commits", help="Number of commits to analyze", required=False)
-p.add_argument("-csv", "--csv", help="Output in CSV format", required=False, action='store_true')
+p.add_argument("-csv", "--csv", help="Output rules in CSV format", required=False)
 
 def main():
     args = p.parse_args()
@@ -99,13 +100,24 @@ def main():
     print(ansi_color_yellow("Association rules:"))
 
     # Output in CSV format
-    if args.csv:
-        apriori.get_rules_csv(1000)
+    rules = []
+    if len(args.csv) > 0:
+        rules = apriori.get_rules_csv()
+        # out_file = open(args.csv, 'w')
+        # json.dump(rules, out_file, indent=2)
+
+        with open(args.csv, mode='w') as csv_file:
+            fieldnames = ['lhs_file', 'lhs_function', 'rhs_file', 'rhs_function', 'support', 'confidence']
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            writer.writeheader()
+            for rule in rules:
+                writer.writerow(rule)
     else:
         rules = apriori.get_rules()
-        for i, rule in enumerate(rules):
-            print("%3d: " % i, end='')
-            print(rule)
+
+    for i, rule in enumerate(rules):
+        print("%3d: " % i, end='')
+        print(rule)
 
 
 if __name__ == '__main__':
