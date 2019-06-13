@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import re
 from parsers.base import BaseParser
 
 
@@ -8,4 +8,5 @@ class JavaParser(BaseParser):
         return False
 
     def get_changes(self, diff):
-        return []  # TODO: create java parser
+        return set(re.findall(r"(?:(?:public)|(?:private)|(?:static)|(?:protected)\s+)* \w+ +\w+ *\([^\)]*\) *\{", diff, re.MULTILINE))
+
