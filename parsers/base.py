@@ -14,7 +14,7 @@ class BaseParser:
         return False
 
     def get_diff(self):
-        args = ["git", "show", "--function-context", self.commit_hash]
+        args = ["git", "show", "-U0", self.commit_hash]
         diff_proccess = subprocess.Popen(args, stdout=subprocess.PIPE, encoding="utf-8", errors="ignore",
                                          universal_newlines=True, stderr=subprocess.PIPE, cwd=self.project_path)
 
@@ -35,7 +35,7 @@ class BaseParser:
 
             if file_name and functions_changed:
                 for function in functions_changed:
-                    diffs.append("[%s] %s" % (file_name, function))
+                    diffs.append("%s|%s" % (file_name, function))
 
         diffs.sort()
 
