@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1557418255 source:c:\projects\git-test\code\main.cpp
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+	<string.h>
+	"Memory.h"
+	"EntireFile.cpp"
+	"FileReader.cpp"
+	"FileWriter.cpp"
+	"Array.cpp"
+	"String.cpp"
+	"string_utils.cpp"
+
+1533327478 c:\projects\git-test\code\memory.h
+
+1555731134 c:\projects\git-test\code\entirefile.cpp
+	"memory.h"
+	"memory.h"
+
+1557416532 c:\projects\git-test\code\filereader.cpp
+
+1536277800 c:\projects\git-test\code\array.cpp
+	"memory.h"
+	"memory.h"
+
+1550771060 c:\projects\git-test\code\string.cpp
+	"memory.h"
+	"memory.h"
+	"string.h"
+
+1555171094 c:\projects\git-test\code\string_utils.cpp
+
+1552958757 c:\projects\git-test\code\filewriter.cpp
+

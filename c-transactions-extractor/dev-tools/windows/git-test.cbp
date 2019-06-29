@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="git-test" />
+		<Option pch_mode="2" />
+		<Option compiler="mingw-620" />
+		<Build>
+			<Target title="win32">
+				<Option output="C:/projects/git-test/bin/win32/git-test" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:/projects/git-test/bin/win32/" />
+				<Option object_output="obj/win32/" />
+				<Option type="1" />
+				<Option compiler="mingw-620" />
+				<Option parameters="C:/projects/git-test/test-projects/libgit2 ../../output/libgit2-500-txns.json 500" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-Waddress" />
+					<Add option="-Warray-bounds=1" />
+					<Add option="-Wbool-compare" />
+					<Add option="-Wc++11-compat" />
+					<Add option="-Wchar-subscripts" />
+					<Add option="-Wcomment" />
+					<Add option="-Wenum-compare" />
+					<Add option="-Wformat" />
+					<Add option="-Wlogical-not-parentheses" />
+					<Add option="-Wmaybe-uninitialized" />
+					<Add option="-Wmemset-transposed-args" />
+					<Add option="-Wmisleading-indentation" />
+					<Add option="-Wmissing-braces" />
+					<Add option="-Wnarrowing" />
+					<Add option="-Wnonnull" />
+					<Add option="-Wnonnull-compare" />
+					<Add option="-Wopenmp-simd" />
+					<Add option="-Wparentheses" />
+					<Add option="-Wreturn-type" />
+					<Add option="-Wsequence-point" />
+					<Add option="-Wsizeof-pointer-memaccess" />
+					<Add option="-Wstrict-aliasing" />
+					<Add option="-Wstrict-overflow=1" />
+					<Add option="-Wswitch" />
+					<Add option="-Wtautological-compare" />
+					<Add option="-Wtrigraphs" />
+					<Add option="-Wuninitialized" />
+					<Add option="-Wunknown-pragmas" />
+					<Add option="-Wunused-function" />
+					<Add option="-Wunused-label" />
+					<Add option="-Wunused-value" />
+					<Add option="-Wunused-variable" />
+					<Add option="-Wvolatile-register-var" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="../../code/main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
