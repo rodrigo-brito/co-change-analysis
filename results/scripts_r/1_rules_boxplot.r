@@ -3,8 +3,10 @@ library(plyr) # install.packages("plyr")
 # INPUTS
 data <- read.csv("../output.csv", sep=",")
 
-tmp.go_projects = data[data$language == "go",]
-tmp.c_projects = data[data$language == "c",]
+min_confidence = 0.5
+
+tmp.go_projects = data[data$language == "go" & data$confidence >= min_confidence,]
+tmp.c_projects = data[data$language == "c" & data$confidence >= min_confidence,]
 
 # Convert project names
 tmp.go_projects[] <- lapply(tmp.go_projects, as.character)
