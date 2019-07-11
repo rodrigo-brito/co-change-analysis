@@ -1,8 +1,6 @@
 # co-change-analysis
 
-**Warning**: :construction: Work in Progress :construction:
-
-Extract and analysis co-changes in Go, Python and Java projects
+Extract and analysis co-changes in Go and C projects
 
 ### Installation and usage
 1. Install [python3](https://www.python.org/downloads/), [virtualenv](https://virtualenv.pypa.io/en/latest/installation/) and [git](https://git-scm.com/downloads).
